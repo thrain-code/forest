@@ -2,7 +2,7 @@ name: Auto Green Commit
 
 on:
   schedule:
-    - cron: "0 0 * * *"  # Setiap hari jam 00:00 UTC
+    - cron: "0 0 * * *"  # Jalankan setiap hari pukul 00:00 UTC
 
 jobs:
   commit:
@@ -13,12 +13,14 @@ jobs:
 
       - name: Setup Git
         run: |
-          git config --global user.name "Your Name"
-          git config --global user.email "your-email@example.com"
+          git config --global user.name "thrain-code"
+          git config --global user.email "arkadanisaysstuff@gmail.com"
 
       - name: Commit & Push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           echo "Auto commit at $(date)" >> log.txt
           git add log.txt
-          git commit -m "Automated commit on $(date)"
-          git push
+          git commit -m "Automated commit on $(date)" || exit 0
+          git push origin main
