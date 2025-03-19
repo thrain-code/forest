@@ -2,8 +2,7 @@ name: Auto Green Commit
 
 on:
   schedule:
-    - cron: "22 17 * * *"  # Jalankan setiap hari pukul 00:00 UTC
-
+    - cron: "42 17 * * *" 
 jobs:
   commit:
     runs-on: ubuntu-latest
