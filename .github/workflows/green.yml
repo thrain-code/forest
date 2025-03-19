@@ -19,7 +19,8 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
-          echo "Auto commit at $(date)" >> log.txt
+          git config --global user.name "thrain-code"
+          git config --global user.email "arkadanisaysstuff@gmail.com"
           git add log.txt
-          git commit -m "Automated commit on $(date)" || exit 0
-          git push origin main
+          git commit -m "Automated commit on $(date +'%Y-%m-%d %H:%M:%S')" || exit 0
+          git push https://thrain-code:${{ secrets.GH_TOKEN }}@github.com/thrain-code/commit.git
