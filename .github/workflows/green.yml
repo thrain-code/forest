@@ -18,7 +18,7 @@ jobs:
 
       - name: Commit & Push
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
           echo "Auto commit at $(date)" >> log.txt
           git add log.txt
